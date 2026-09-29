@@ -1,0 +1,21 @@
+{
+  "schema": "gooo/metaprogramming-experiment-lineage/v1",
+  "upstream_repository": "https://github.com/kimjooyoon/gooo-metaprogramming-experiments",
+  "upstream_commit": "777017fa22638221636897731b64ef9c5f0599c6",
+  "upstream_plan_sha256": "sha256:11652b0b20b1ed6d5103cab73fff7bea7a0b4de2f7c1b6dc61011f11d58475d6",
+  "upstream_laya_report_sha256": "sha256:5fdb3ab209e68edfdd406e7ca3d586f4d16fb9792ec8062daca884f96a5d4672",
+  "upstream_fallback_report_sha256": "sha256:7d89ecb76f2df569c10852df76f4fbf11bbaa733edca4b71a14a23e2d08c4277",
+  "slice_intent_id": "sign_classification",
+  "slice_experiment_ids": [
+    "sign_classification__assigned_ladder",
+    "sign_classification__assigned_switch",
+    "sign_classification__boolean_switch",
+    "sign_classification__closure_branch",
+    "sign_classification__finite_domain_map",
+    "sign_classification__guard_returns",
+    "sign_classification__if_else_ladder",
+    "sign_classification__partial_assignment",
+    "sign_classification__predicate_helpers",
+    "sign_classification__predicate_table"
+  ]
+}

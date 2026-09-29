@@ -1,0 +1,188 @@
+{
+  "schema": "gooo/metaprogramming-matrix-plan/v1",
+  "domain": [
+    -12,
+    -11,
+    -10,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "fallback": "guard_returns",
+  "intents": [
+    {
+      "id": "sign_classification",
+      "task": "정수의 부호를 분류한다. 음수는 -1, 0은 0, 양수는 1이다. 음수·경계·양수 구간이 모두 구현되어야 한다.",
+      "default": 0,
+      "requirements": [
+        "negative branch",
+        "zero boundary",
+        "positive branch"
+      ],
+      "rules": [
+        {
+          "when": [
+            {
+              "op": "lt",
+              "value": 0
+            }
+          ],
+          "value": -1
+        },
+        {
+          "when": [
+            {
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "value": 0
+        },
+        {
+          "when": [
+            {
+              "op": "gt",
+              "value": 0
+            }
+          ],
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "assigned_ladder",
+      "description": "기본 결과 변수를 먼저 할당하고 if/else-if에서 값을 갱신한 뒤 한 번 반환한다.",
+      "style": "assign_ladder",
+      "constructs": [
+        "assignment",
+        "if",
+        "else",
+        "condition",
+        "return"
+      ]
+    },
+    {
+      "id": "assigned_switch",
+      "description": "결과 변수를 선언하고 조건 switch의 일치 분기에서 값을 할당한다.",
+      "style": "assign_switch",
+      "constructs": [
+        "assignment",
+        "switch",
+        "condition",
+        "return"
+      ]
+    },
+    {
+      "id": "boolean_switch",
+      "description": "조건식을 switch case로 평가하고 default 경로를 명시한다.",
+      "style": "switch",
+      "constructs": [
+        "switch",
+        "condition",
+        "return"
+      ]
+    },
+    {
+      "id": "closure_branch",
+      "description": "선택 결과를 만드는 지역 함수를 만들고 그 안에 가드 분기를 조립한다.",
+      "style": "closure",
+      "constructs": [
+        "closure",
+        "assignment",
+        "if",
+        "condition",
+        "call",
+        "return"
+      ]
+    },
+    {
+      "id": "finite_domain_map",
+      "description": "선언된 유한 평가 도메인에 대해 미리 계산한 결과 표를 조회하고 범위 밖은 기본값으로 처리한다.",
+      "style": "finite_map",
+      "constructs": [
+        "assignment",
+        "if",
+        "return"
+      ]
+    },
+    {
+      "id": "guard_returns",
+      "description": "조건을 순서대로 검사하고 각 일치 지점에서 즉시 반환한다. 기본 결과는 마지막 반환이다.",
+      "style": "guard",
+      "constructs": [
+        "if",
+        "condition",
+        "return"
+      ]
+    },
+    {
+      "id": "if_else_ladder",
+      "description": "우선순위를 보존하는 if/else-if/else 계단으로 분기를 구성한다.",
+      "style": "ladder",
+      "constructs": [
+        "if",
+        "else",
+        "condition",
+        "return"
+      ]
+    },
+    {
+      "id": "partial_assignment",
+      "description": "처음 두 규칙만 변수 갱신 경로로 조립하고 나머지는 기본값으로 둔다. 의도적 부분 완성 경로다.",
+      "style": "partial_assign",
+      "constructs": [
+        "assignment",
+        "if",
+        "else",
+        "condition",
+        "return"
+      ]
+    },
+    {
+      "id": "predicate_helpers",
+      "description": "각 조건을 이름 있는 보조 판정 함수로 분리한 다음 본문에서 순서대로 조립한다.",
+      "style": "helpers",
+      "constructs": [
+        "call",
+        "if",
+        "condition",
+        "return"
+      ]
+    },
+    {
+      "id": "predicate_table",
+      "description": "조건 함수와 결과 함수를 표에 모으고 순서대로 훑어 첫 일치 결과를 반환한다.",
+      "style": "table",
+      "constructs": [
+        "range",
+        "if",
+        "closure",
+        "condition",
+        "assignment",
+        "call",
+        "return"
+      ]
+    }
+  ]
+}
